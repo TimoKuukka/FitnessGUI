@@ -10,6 +10,7 @@ from PyQt5 import QtWidgets # UI elements functionality
 from PyQt5.uic import loadUi
 from datetime import date
 import kuntoilija
+import timetools
 
 # Class for the main window
 class MainWindow(QtWidgets.QMainWindow):
@@ -48,26 +49,36 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 
-
     # Define slots in methods
 
     # Calculates BMI, finnish and US fat percentages and updates corrensponding labels
     def calculateAll(self):
+        name = self.nameLE.text()
+        date = self.wighingDE.text().toString(format=QtCore.Qt.ISODate) # FIXME: Tämä on rikki, Typeerror
         height = self.heightSB.value() 
         weight = self.weightSB.value()
+        
+        # Convert birthdate to ISO string
+        # birthday = self.birthDateE.date().toString(format=QtCore.Qt.ISODate)
         age = self.ageSB.value()
-        gender = self.genderCB.value()
-        dateOfWeighing = self.wighingDE()
+
+        # Set Gender Value according to Combobox value
+        gendertext = self.genderCB.currentText()
+        if gendertext == 'Mies':
+            gender = 1
+        else:
+            gender = 0
+        
+        # Convert Weighing data to ISO string
+        #dateOfWighing = self.wighingDE.date().toString(format=QtCore.Qt.ISODate)
+        #TODO: opella: age = timetools.datediff2(birthday, dateOfWeighing, 'year'), jos tätä käyttää, pitää vaihtaa syntymäaika spinboxin tilalle QdateEdit
+
+
 
         # Create an athlete from Kuntoilija class
-        athlete = kuntoilija.Kuntoilija()
+        athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, date)
         bmi = athlete.bmi
-
-        neck = self.neckSB.value()
-        waist = self.waistSB.value()
-        hips = self.hipsSB.value()
-
-        self.bmiLabel.setText('100')
+        self.bmiLabel.setText(bmi)
 
     # Saves the data to a disk
     def saveData(self):
