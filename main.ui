@@ -54,6 +54,15 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="locale">
+     <locale language="Finnish" country="Finland"/>
+    </property>
+    <property name="displayFormat">
+     <string>yyyy-MM-dd</string>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QComboBox" name="genderComboBox">
     <property name="geometry">
@@ -67,6 +76,16 @@
     <item>
      <property name="text">
       <string>Valitse sukupuoli</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mies</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Nainen</string>
      </property>
     </item>
    </widget>
@@ -387,12 +406,25 @@
      <x>0</x>
      <y>0</y>
      <width>437</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>nameLineEdit</tabstop>
+  <tabstop>ageSpinBox</tabstop>
+  <tabstop>wighingDateEdit</tabstop>
+  <tabstop>genderComboBox</tabstop>
+  <tabstop>heightSpinBox</tabstop>
+  <tabstop>weightSpinBox</tabstop>
+  <tabstop>neckSpinBox</tabstop>
+  <tabstop>waistSpinBox</tabstop>
+  <tabstop>hipsSpinBox</tabstop>
+  <tabstop>calcPushButton</tabstop>
+  <tabstop>savePushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
