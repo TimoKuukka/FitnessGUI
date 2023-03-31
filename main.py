@@ -54,7 +54,8 @@ class MainWindow(QtWidgets.QMainWindow):
     # Calculates BMI, finnish and US fat percentages and updates corrensponding labels
     def calculateAll(self):
         name = self.nameLE.text()
-        date = self.wighingDE.text().toString(format=QtCore.Qt.ISODate) # FIXME: Tämä on rikki, Typeerror
+        date = self.wighingDE.text()
+        # FIXME: Tämä on rikki, Type error
         height = self.heightSB.value() 
         weight = self.weightSB.value()
         
