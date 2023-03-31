@@ -5,9 +5,11 @@
 # ---------------------
 # Import the PyQt5 modules
 import sys 
-from PyQt6 import QtCore # Core functionality of Qt
-from PyQt6 import QtWidgets # UI elements functionality
-from PyQt6.uic.load_ui import loadUi
+from PyQt5 import QtCore # Core functionality of Qt
+from PyQt5 import QtWidgets # UI elements functionality
+from PyQt5.uic import loadUi
+from datetime import date
+import kuntoilija
 
 # Class for the main window
 class MainWindow(QtWidgets.QMainWindow):
@@ -25,9 +27,51 @@ class MainWindow(QtWidgets.QMainWindow):
         self.calcPB = self.calcPushButton
         self.calcPB.clicked.connect(self.calculateAll)
 
-# Define slots in methods
+        self.savePB = self.savePushButton
+        self.savePB.clicked.connect(self.saveData)
+
+        # Measurement data
+        self.nameLE = self.nameLineEdit
+        self.genderCB = self.genderComboBox
+        self.ageSB = self.ageSpinBox
+        self.heightSB = self.heightSpinBox
+        self.weightSB = self.weightSpinBox
+        self.neckSB = self.neckSpinBox
+        self.waistSB = self.waistSpinBox
+        self.hipsSB = self.hipsSpinBox
+
+
+        # Set current date when the app starts
+        self.currentDate = date.today()
+        self.wighingDE = self.wighingDateEdit
+        self.wighingDE.setDate(self.currentDate)
+
+
+
+
+    # Define slots in methods
+
+    # Calculates BMI, finnish and US fat percentages and updates corrensponding labels
     def calculateAll(self):
+        height = self.heightSB.value() 
+        weight = self.weightSB.value()
+        age = self.ageSB.value()
+        gender = self.genderCB.value()
+        dateOfWeighing = self.wighingDE()
+
+        # Create an athlete from Kuntoilija class
+        athlete = kuntoilija.Kuntoilija()
+        bmi = athlete.bmi
+
+        neck = self.neckSB.value()
+        waist = self.waistSB.value()
+        hips = self.hipsSB.value()
+
         self.bmiLabel.setText('100')
+
+    # Saves the data to a disk
+    def saveData(self):
+        pass
 
 
 if __name__ == "__main__":
@@ -37,6 +81,7 @@ if __name__ == "__main__":
     # Create the main window
     #  (and show it)
     appWindow = MainWindow()
+    app.setStyle('Fusion')
     appWindow.show()
     sys.exit(app.exec())
 
