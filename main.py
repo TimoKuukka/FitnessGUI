@@ -11,6 +11,9 @@ from PyQt5.uic import loadUi
 from datetime import date
 import kuntoilija
 import timetools
+# TODO: Import some library able to plot trends and make it as widget in the UI
+# TODO: REMOVE EVERYTHING 'ageSpinBox'
+# TODO: ADD birthDateE = self.birthDateEdit
 
 # Class for the main window
 class MainWindow(QtWidgets.QMainWindow):
@@ -24,28 +27,31 @@ class MainWindow(QtWidgets.QMainWindow):
         # Load the UI file
         loadUi('main.ui', self)
 
-        # Define UI Controls in buttons and input fields
-        self.calcPB = self.calcPushButton
-        self.calcPB.clicked.connect(self.calculateAll)
+        # Define UI Controls ie buttons and input fields
+        self.nameLE = self.nameLineEdit
+        self.birthDE = self.birthDateEdit
+        self.genderCB = self.genderComboBox
 
-        self.savePB = self.savePushButton
-        self.savePB.clicked.connect(self.saveData)
+        # Set current date when the app starts
+        # TODO: FIX date format to shorter code
+        self.currentDate = date.today()
+        self.wighingDE = self.wighingDateEdit
+        self.wighingDE.setDate(self.currentDate)
 
         # Measurement data
-        self.nameLE = self.nameLineEdit
-        self.genderCB = self.genderComboBox
-        self.ageSB = self.ageSpinBox
         self.heightSB = self.heightSpinBox
         self.weightSB = self.weightSpinBox
         self.neckSB = self.neckSpinBox
         self.waistSB = self.waistSpinBox
         self.hipsSB = self.hipsSpinBox
 
+        # TODO: Disable Calculate button until values have been edited
+        self.calcPB = self.calcPushButton
+        self.calcPB.clicked.connect(self.calculateAll)
 
-        # Set current date when the app starts
-        self.currentDate = date.today()
-        self.wighingDE = self.wighingDateEdit
-        self.wighingDE.setDate(self.currentDate)
+        # TODO: Disable Calculate button until values have been edited
+        self.savePB = self.savePushButton
+        self.savePB.clicked.connect(self.saveData)
 
 
 
@@ -54,14 +60,11 @@ class MainWindow(QtWidgets.QMainWindow):
     # Calculates BMI, finnish and US fat percentages and updates corrensponding labels
     def calculateAll(self):
         name = self.nameLE.text()
-        date = self.wighingDE.text()
-        # FIXME: Tämä on rikki, Type error
-        height = self.heightSB.value() 
+        height = self.heightSB.value() # Spinbox value as an integer 
         weight = self.weightSB.value()
         
-        # Convert birthdate to ISO string
-        # birthday = self.birthDateE.date().toString(format=QtCore.Qt.ISODate)
-        age = self.ageSB.value()
+        # Convert birthday to ISO string using QtCore methods
+        birthday = self.birthDE.date().toString(format=QtCore.Qt.ISODate)
 
         # Set Gender Value according to Combobox value
         gendertext = self.genderCB.currentText()
@@ -69,18 +72,19 @@ class MainWindow(QtWidgets.QMainWindow):
             gender = 1
         else:
             gender = 0
-        
+
         # Convert Weighing data to ISO string
-        #dateOfWighing = self.wighingDE.date().toString(format=QtCore.Qt.ISODate)
-        #TODO: opella: age = timetools.datediff2(birthday, dateOfWeighing, 'year'), jos tätä käyttää, pitää vaihtaa syntymäaika spinboxin tilalle QdateEdit
+        dateOfWeighing = self.wighingDE.date().toString(format=QtCore.Qt.ISODate)
 
-
+        # Calculate time difference using our home made tools
+        age = timetools.datediff2(birthday, dateOfWeighing, 'year')
 
         # Create an athlete from Kuntoilija class
-        athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, date)
+        athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, dateOfWeighing)
         bmi = athlete.bmi
-        self.bmiLabel.setText(bmi)
+        self.bmiLabel.setText(str(bmi))
 
+    # TODO: Make this method to save results to a disk drive
     # Saves the data to a disk
     def saveData(self):
         pass
@@ -90,8 +94,7 @@ if __name__ == "__main__":
     # Create the application
     app = QtWidgets.QApplication(sys.argv)
 
-    # Create the main window
-    #  (and show it)
+    # Create the Main Window object from MainWindow class and show it on the screen
     appWindow = MainWindow()
     app.setStyle('Fusion')
     appWindow.show()
