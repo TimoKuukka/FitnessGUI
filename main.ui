@@ -345,7 +345,7 @@
      <string>Rasvaprosentti (FI)</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_16">
+   <widget class="QLabel" name="fatUsLabel">
     <property name="geometry">
      <rect>
       <x>150</x>
