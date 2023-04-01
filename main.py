@@ -17,8 +17,6 @@ import timetools
 
 
 # TODO: Import some library able to plot trends and make it as widget in the UI
-# TODO: REMOVE EVERYTHING 'ageSpinBox'
-# TODO: ADD birthDateE = self.birthDateEdit
 
 # Class for the main window
 class MainWindow(QtWidgets.QMainWindow):
@@ -88,6 +86,17 @@ class MainWindow(QtWidgets.QMainWindow):
         athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, dateOfWeighing)
         bmi = athlete.bmi
         self.bmiLabel.setText(str(bmi))
+
+        ''' FIXME: Develop these
+        # Calculate fat percentages
+        fatfin = athlete.fatfin
+        fatus = athlete.fatus
+        self.fatfinLabel.setText(str(fatfin))
+        self.fatusLabel.setText(str(fatus))
+        # print fi fat percentages to fatFiLabel
+
+        # print us fat percentages to fatUsLabel
+        '''
 
     # TODO: Make this method to save results to a disk drive
     # Saves the data to a disk
