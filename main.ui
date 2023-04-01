@@ -45,7 +45,7 @@
      <string>Nimi</string>
     </property>
    </widget>
-   <widget class="QDateEdit" name="wighingDateEdit">
+   <widget class="QDateEdit" name="weighingDateEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -381,12 +381,12 @@
      <rect>
       <x>230</x>
       <y>10</y>
-      <width>49</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Ikä</string>
+     <string>syntymäaika</string>
     </property>
    </widget>
    <widget class="QDateEdit" name="birthDateEdit">
@@ -423,7 +423,7 @@
  </widget>
  <tabstops>
   <tabstop>nameLineEdit</tabstop>
-  <tabstop>wighingDateEdit</tabstop>
+  <tabstop>weighingDateEdit</tabstop>
   <tabstop>genderComboBox</tabstop>
   <tabstop>heightSpinBox</tabstop>
   <tabstop>weightSpinBox</tabstop>
