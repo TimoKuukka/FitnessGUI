@@ -73,6 +73,9 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="currentText">
+     <string>Valitse sukupuoli</string>
+    </property>
     <item>
      <property name="text">
       <string>Valitse sukupuoli</string>
@@ -111,8 +114,14 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>100</number>
+    </property>
     <property name="maximum">
      <number>250</number>
+    </property>
+    <property name="value">
+     <number>100</number>
     </property>
    </widget>
    <widget class="QSpinBox" name="weightSpinBox">
@@ -123,6 +132,9 @@
       <width>71</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>20</number>
     </property>
     <property name="maximum">
      <number>250</number>
@@ -163,6 +175,9 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>10</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="waistSpinBox">
     <property name="geometry">
@@ -172,6 +187,9 @@
       <width>71</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>30</number>
     </property>
     <property name="maximum">
      <number>200</number>
@@ -238,8 +256,14 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>30</number>
+    </property>
     <property name="maximum">
      <number>200</number>
+    </property>
+    <property name="value">
+     <number>30</number>
     </property>
    </widget>
    <widget class="QLabel" name="hipsLabel">
@@ -400,6 +424,16 @@
     </property>
     <property name="locale">
      <locale language="Finnish" country="Finland"/>
+    </property>
+    <property name="dateTime">
+     <datetime>
+      <hour>0</hour>
+      <minute>0</minute>
+      <second>0</second>
+      <year>1900</year>
+      <month>1</month>
+      <day>1</day>
+     </datetime>
     </property>
     <property name="displayFormat">
      <string>yyyy-MM-dd</string>
