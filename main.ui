@@ -348,7 +348,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Painoindeksi</string>
+     <string>0</string>
     </property>
    </widget>
    <widget class="QLabel" name="fatFiLabel">
@@ -366,7 +366,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Rasvaprosentti (FI)</string>
+     <string>0</string>
     </property>
    </widget>
    <widget class="QLabel" name="fatUsLabel">
@@ -384,7 +384,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Rasvaprosentti (US)</string>
+     <string>0</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">

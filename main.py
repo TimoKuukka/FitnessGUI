@@ -146,24 +146,28 @@ class MainWindow(QW.QMainWindow):
             # Create a junior athlete from Kuntoilija class
             athlete = kuntoilija.JunioriKuntoilija(name, height, weight, age, gender)
             
-        self.athlete.bmi
+        bmi = athlete.bmi
         self.bmiLabel.setText(str(bmi))
 
         fiFatPercentage = athlete.rasvaprosentti
 
-        
         if gender == 1:
-            usaFatPercentage = athlete.usa_rasvaprosentti_mies(height, waist, neck)
+            usFatPercentage = athlete.usa_rasvaprosentti_mies(height, waist, neck)
         else:
-            usaFatPercentage = athlete.usa_rasvaprosentti_nainen(height, waist, hips, neck)
+            usFatPercentage = athlete.usa_rasvaprosentti_nainen(height, waist, hips, neck)
         
-        # Set fat percentage
+        # Set fat percentage labels
         self.fatFiLabel.setText(str(fiFatPercentage))
-        self.fatUsaLabel.setText(str(usaFatPercentage))
+        self.fatUsLabel.setText(str(usFatPercentage))
 
 
+    def constructData(self, athlete, fiFat, usFat):
+        # A dictionary for single weighing of an athlete
+        athlete_data_row = {'nimi': athlete.nimi, 'pituus': athlete.pituus, 'paino': athlete.paino,
+                'ika': athlete.ika, 'sukupuoli': athlete.sukupuoli, 'pvm': athlete.punnitus_paiva, 
+                'bmi': athlete.bmi, 'rasvaprosenttiFi': fiFat, 'rasvaprosenttiUs': usFat}
+        return athlete_data_row        
 
-    # TODO: Make this method to save results to a disk drive
     # Saves the data to a disk
     def saveData(self):
         pass
@@ -176,29 +180,29 @@ if __name__ == "__main__":
     # Create the Main Window object from MainWindow class and show it on the screen
     appWindow = MainWindow()
     
-    # Create dark style to all
-    # Force the style to be the same on all OSs:
-    app.setStyle('Fusion')
+    # # Create dark style to all
+    # # Force the style to be the same on all OSs:
+    # app.setStyle('Fusion')
 
-    # Define the palette to dark
-    dark_palette = QPalette()
-    dark_palette.setColor(QPalette.Window, QColor(53, 53, 53))
-    dark_palette.setColor(QPalette.WindowText, Qt.white)
-    dark_palette.setColor(QPalette.Base, QColor(25, 25, 25))
-    dark_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
-    dark_palette.setColor(QPalette.ToolTipBase, Qt.white)
-    dark_palette.setColor(QPalette.ToolTipText, Qt.white)
-    dark_palette.setColor(QPalette.Text, Qt.white)
-    dark_palette.setColor(QPalette.Button, QColor(53, 53, 53))
-    dark_palette.setColor(QPalette.ButtonText, Qt.white)
-    dark_palette.setColor(QPalette.BrightText, Qt.red)
-    dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
-    dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
-    dark_palette.setColor(QPalette.HighlightedText, Qt.black)
-    # Apply the palette
-    app.setPalette(dark_palette)
-    # Apply the dark stylesheet
-    app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+    # # Define the palette to dark
+    # dark_palette = QPalette()
+    # dark_palette.setColor(QPalette.Window, QColor(53, 53, 53))
+    # dark_palette.setColor(QPalette.WindowText, Qt.white)
+    # dark_palette.setColor(QPalette.Base, QColor(25, 25, 25))
+    # dark_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+    # dark_palette.setColor(QPalette.ToolTipBase, Qt.white)
+    # dark_palette.setColor(QPalette.ToolTipText, Qt.white)
+    # dark_palette.setColor(QPalette.Text, Qt.white)
+    # dark_palette.setColor(QPalette.Button, QColor(53, 53, 53))
+    # dark_palette.setColor(QPalette.ButtonText, Qt.white)
+    # dark_palette.setColor(QPalette.BrightText, Qt.red)
+    # dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
+    # dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+    # dark_palette.setColor(QPalette.HighlightedText, Qt.black)
+    # # Apply the palette
+    # app.setPalette(dark_palette)
+    # # Apply the dark stylesheet
+    # app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
 
     # Show the window
     appWindow.show()
