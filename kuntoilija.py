@@ -47,7 +47,7 @@ class Kuntoilija:
 
     # Metodi rasvaprosentin laskemiseen USA:n armeijan metodeilla
     def usa_rasvaprosentti_mies(self, pituus, vyotaron_ymparys, kaulan_ymparys):
-        """ summary
+        """ laskee miehen rasvaprosentin USA:n armeijan kaavalla
 
         Args:
             pituus(float): pituus (cm)
