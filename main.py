@@ -53,8 +53,8 @@ class MainWindow(QW.QMainWindow):
         self.neckSB.valueChanged.connect(self.activateCalculatePB)
         self.waistSB = self.waistSpinBox
         self.waistSB.valueChanged.connect(self.activateCalculatePB)
-        self.hipsSB.setEnabled(False)
         self.hipsSB = self.hipsSpinBox
+        self.hipsSB.setEnabled(False)
         self.hipsSB.valueChanged.connect(self.activateCalculatePB)
 
         # TODO: Disable Calculate button until values have been edited
@@ -100,7 +100,7 @@ class MainWindow(QW.QMainWindow):
         if self.genderCB.currentText() == 'Nainen':
             self.hipsSB.setEnabled(True)
 
-            if self.hipsSB.value() == 30:  
+            if self.hipsSB.value() == 50:  
                 self.calcPB.setEnabled(False)
         else:
             self.hipsSB.setEnabled(False)
