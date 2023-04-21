@@ -14,6 +14,7 @@ from PyQt5.uic import loadUi
 from datetime import date
 import kuntoilija
 import timetools
+import athleteFile # Home made module for processing data files
 
 
 # TODO: Import some library able to plot trends and make it as widget in the UI
@@ -69,6 +70,18 @@ class MainWindow(QW.QMainWindow):
         self.savePB.clicked.connect(self.saveData)
         self.savePB.setEnabled(False)
         
+        # Read data from file and save it to a list
+        self.dataList = []
+        jsonFile = athleteFile.ProcessJsonFile()
+        try:
+            data = jsonFile.readData('athleteData.json')
+            self.dataList = data[3]
+        except Exception as e:
+            data = (0, 'Error', str(e), self.dataList)
+            
+        
+
+        # Read previous athlete_data from disk
 
 
     # Define slots in methods
@@ -150,17 +163,33 @@ class MainWindow(QW.QMainWindow):
         self.fatFiLabel.setText(str(fiFatPercentage))
         self.fatUsLabel.setText(str(usFatPercentage))
 
+        self.dataRow = self.constructData(athlete)
+        print(self.dataRow)
 
-    def constructData(self, athlete, fiFat, usFat):
+    def constructData(self, athlete):
         # A dictionary for single weighing of an athlete
         athlete_data_row = {'nimi': athlete.nimi, 'pituus': athlete.pituus, 'paino': athlete.paino,
                 'ika': athlete.ika, 'sukupuoli': athlete.sukupuoli, 'pvm': athlete.punnitus_paiva, 
-                'bmi': athlete.bmi, 'rasvaprosenttiFi': fiFat, 'rasvaprosenttiUs': usFat}
+                'bmi': athlete.bmi, 'rasvaprosenttiFi': athlete.fi_rasva, 'rasvaprosenttiUs': athlete.usa_rasva}
         return athlete_data_row        
 
     # Saves the data to a disk
     def saveData(self):
-        pass
+        self.dataList.append(self.dataRow)
+        jsonfile2 = athleteFile.ProcessJsonFile()
+        status = jsonfile2.saveData('athleteData.json', self.dataList)
+        # Palautetaan arvot tallennuksen jälkeen
+        self.nameLE.clear()
+        zeroDate = QtCore.QDate(1900, 1, 1)
+        self.birthDE.setDate(zeroDate)
+        self.heightSB.setValue(100)
+        self.weightSB.setValue(20)
+        self.neckSB.setValue(10)
+        self.waistSB.setValue(30)
+        self.hipsSB.setValue(50)
+        # Piilottaa tallenna näppäimen operaation suorittamisen jälkeen
+        self.savePB.setEnabled(False)
+
 
 
 if __name__ == "__main__":

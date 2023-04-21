@@ -1,0 +1,68 @@
+[
+    {
+        "nimi": "Pertti",
+        "pituus": 179,
+        "paino": 113,
+        "ika": 36.323287671232876,
+        "sukupuoli": 1,
+        "pvm": "2023-04-21",
+        "bmi": 35.3,
+        "rasvaprosenttiFi": 34.5,
+        "rasvaprosenttiUs": 33.8
+    },
+    {
+        "nimi": "Essi Esimerkki",
+        "pituus": 165,
+        "paino": 65,
+        "ika": 23.304109589041097,
+        "sukupuoli": 0,
+        "pvm": "2023-04-21",
+        "bmi": 23.9,
+        "rasvaprosenttiFi": 28.6,
+        "rasvaprosenttiUs": 8.3
+    },
+    {
+        "nimi": "Test5",
+        "pituus": 150,
+        "paino": 80,
+        "ika": 118.38082191780822,
+        "sukupuoli": 1,
+        "pvm": "2023-04-21",
+        "bmi": 35.6,
+        "rasvaprosenttiFi": 53.7,
+        "rasvaprosenttiUs": 27.6
+    },
+    {
+        "nimi": "Test5",
+        "pituus": 150,
+        "paino": 90,
+        "ika": 118.38082191780822,
+        "sukupuoli": 1,
+        "pvm": "2023-04-21",
+        "bmi": 40.0,
+        "rasvaprosenttiFi": 59.0,
+        "rasvaprosenttiUs": 27.6
+    },
+    {
+        "nimi": "Test6",
+        "pituus": 160,
+        "paino": 65,
+        "ika": 36.28493150684932,
+        "sukupuoli": 0,
+        "pvm": "2023-04-21",
+        "bmi": 25.4,
+        "rasvaprosenttiFi": 33.4,
+        "rasvaprosenttiUs": 22.0
+    },
+    {
+        "nimi": "Testi7",
+        "pituus": 145,
+        "paino": 45,
+        "ika": 23.265753424657536,
+        "sukupuoli": 0,
+        "pvm": "2023-04-21",
+        "bmi": 21.4,
+        "rasvaprosenttiFi": 25.6,
+        "rasvaprosenttiUs": 29.0
+    }
+]
