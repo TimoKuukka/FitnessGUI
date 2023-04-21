@@ -138,23 +138,13 @@ class MainWindow(QW.QMainWindow):
         waist = self.waistSB.value()
         hips = self.hipsSB.value()
 
-        if age >= 18:
-            # Create an athlete from Kuntoilija class
-            athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, dateOfWeighing)
-
-        else:
-            # Create a junior athlete from Kuntoilija class
-            athlete = kuntoilija.JunioriKuntoilija(name, height, weight, age, gender)
+        athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, neck, waist, hips, dateOfWeighing)
             
         bmi = athlete.bmi
         self.bmiLabel.setText(str(bmi))
 
-        fiFatPercentage = athlete.rasvaprosentti
-
-        if gender == 1:
-            usFatPercentage = athlete.usa_rasvaprosentti_mies(height, waist, neck)
-        else:
-            usFatPercentage = athlete.usa_rasvaprosentti_nainen(height, waist, hips, neck)
+        fiFatPercentage = athlete.fi_rasva
+        usFatPercentage = athlete.usa_rasva
         
         # Set fat percentage labels
         self.fatFiLabel.setText(str(fiFatPercentage))
