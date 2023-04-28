@@ -457,6 +457,7 @@
  </widget>
  <tabstops>
   <tabstop>nameLineEdit</tabstop>
+  <tabstop>birthDateEdit</tabstop>
   <tabstop>weighingDateEdit</tabstop>
   <tabstop>genderComboBox</tabstop>
   <tabstop>heightSpinBox</tabstop>
