@@ -1,36 +1,35 @@
-# TESTS FOR TIMETOOLS.PY
+# TESTS FOR MODULE TIMETOOLS.PY
 
-
-# import sys
-# sys.path.append('../timetools')
-
-
-
-# # IMPORT MODULES TO BE TESTED
+# Lets import module to be tested
 import timetools
 
+# UNIT TESTS DEFINITIONS
 
-# UNIT TESTS
-
-# Tests datediff function
+# Test if datediff function calculates correct and absolute values
 def test_datediff():
     assert timetools.datediff('2023-04-28', '2023-04-10') == 18
     assert timetools.datediff('2023-04-10', '2023-04-28') == 18
-
-# Tests timediff function calculates correct and absolute value
-def test_timediff():
-    assert timetools.timediff('11:30:00', '12:00:00') == 0.5
-    assert timetools.timediff('10:00:00', '14:30:00') == 4.5
-
-    # Test same diff with hours, minutes and seconds
-    assert round(timetools.timediff('11:30:15', '10:10:05')), 4 == 1.3361
     
+# Test if timediff function calculates correct and absolute values
+def test_timediff():
+    assert round(timetools.timediff('11:30:15', '10:10:05'), 4) == 1.3361
+    assert round(timetools.timediff('10:10:05', '11:30:15'), 4) == 1.3361
 
-
-# # Tests datediff2 function calculates correct and absote value
-# def test_datediff2():
-#     assert timetools.datediff('2020-05-01', '2020-05-10') == 10
-#     assert timetools.datediff('2020-05-10', '2020-05-01') == 10
-
-
-
+# Test if dateTimeDiff works correctly
+def test_dateTimeDiff():
+    assert timetools.dateTimeDiff('2023-04-27 10:00:00', '2023-04-28 12:30:00') == 26.5
+    
+def test_datediff2():
+    assert timetools.datediff2('2023-04-10', '2023-04-12', 'day') == 2
+    assert timetools.datediff2('2023-04-10', '2023-06-09', 'month') == 2
+    assert timetools.datediff2('2023-04-10', '2025-04-09', 'year') == 2
+    
+def test_timediff2():
+    assert timetools.timediff2('10:00:00', '12:30:00', 'hour') == 2.5
+    assert timetools.timediff2('10:00:00', '12:30:00', 'minute') == 150
+    assert timetools.timediff2('10:00:00', '12:30:00', 'second') == 9000
+   
+def test_dateTimeDiff2():
+    assert round(timetools.dateTimeDiff2('2023-04-27 10:00:00', '2023-04-28 12:30:00', 'day'), 1) == 1.1
+    assert timetools.dateTimeDiff2('2023-04-27 10:00:00', '2023-04-28 12:30:00', 'hour') == 26.5
+    assert timetools.dateTimeDiff2('2023-04-27 10:00:00', '2023-04-28 12:30:00', 'minute') == 1590
