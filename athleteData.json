@@ -64,5 +64,27 @@
         "bmi": 21.4,
         "rasvaprosenttiFi": 25.6,
         "rasvaprosenttiUs": 29.0
+    },
+    {
+        "nimi": "Pertti",
+        "pituus": 180,
+        "paino": 113,
+        "ika": 36.345205479452055,
+        "sukupuoli": 1,
+        "pvm": "2023-04-28",
+        "bmi": 34.9,
+        "rasvaprosenttiFi": 34.0,
+        "rasvaprosenttiUs": 33.6
+    },
+    {
+        "nimi": "PirkkoMatti",
+        "pituus": 160,
+        "paino": 60,
+        "ika": 33.342465753424655,
+        "sukupuoli": 0,
+        "pvm": "2023-04-28",
+        "bmi": 23.4,
+        "rasvaprosenttiFi": 30.3,
+        "rasvaprosenttiUs": 9.6
     }
 ]
