@@ -442,6 +442,19 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="testUiPushButton">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>190</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Testaa</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -474,19 +487,24 @@
      <addaction name="actionUlkoasu"/>
     </widget>
     <addaction name="actionTulosta"/>
-    <addaction name="actionSulje"/>
     <addaction name="menuJaa"/>
     <addaction name="menuAsetukset"/>
-    <addaction name="actionY_tila"/>
+    <addaction name="actionSulje"/>
    </widget>
    <widget class="QMenu" name="menuMuokkaa">
     <property name="title">
      <string>Muokkaa</string>
     </property>
-    <addaction name="actionAutomaattinen_tallennus"/>
+    <addaction name="actionPalauta_oletukset"/>
+   </widget>
+   <widget class="QMenu" name="menuOhjeet">
+    <property name="title">
+     <string>Ohjeet</string>
+    </property>
    </widget>
    <addaction name="menuTiedosto"/>
    <addaction name="menuMuokkaa"/>
+   <addaction name="menuOhjeet"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionTulosta">
@@ -549,6 +567,19 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionPoista_k_ytt_j">
+   <property name="text">
+    <string>Poista käyttäjä...</string>
+   </property>
+  </action>
+  <action name="actionPalauta_oletukset">
+   <property name="text">
+    <string>Palauta oletukset</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
    </property>
   </action>
  </widget>

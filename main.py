@@ -69,6 +69,10 @@ class MainWindow(QW.QMainWindow):
         self.calcPB.clicked.connect(self.calculateAll)
         self.calcPB.setEnabled(False)
 
+        # Temporary push button for inserting test values into controls
+        self.testPB = self.testUiPushButton
+        self.testPB.clicked.connect(self.insertTestValues)
+
         # self.savePB = self.savePushButton
         self.savePB = self.findChild(QW.QPushButton, 'savePushButton')
         self.savePB.clicked.connect(self.saveData)
@@ -167,7 +171,17 @@ class MainWindow(QW.QMainWindow):
 
 
             
-    
+    def insertTestValues(self):
+        # Set test values to alla controls
+        self.nameLE.setText('Erkki Esimerkki')
+        testBirhtday = QtCore.QDate(1987, 12, 31)
+        self.birthDE.setDate(testBirhtday)
+        self.genderCB.setCurrentText('Mies')
+        self.heightSB.setValue(179)
+        self.weightSB.setValue(105)
+        self.neckSB.setValue(30)
+        self.waistSB.setValue(105)
+
     
     # Calculates BMI, finnish and US fat percentages and updates corrensponding labels
     def calculateAll(self):
@@ -195,8 +209,9 @@ class MainWindow(QW.QMainWindow):
         age = timetools.datediff2(birthday, dateOfWeighing, 'year')
 
         neck = self.neckSB.value()
-        if neck < 20:
-            self.alert('Tarkista kaulan koko', 'kaulan ympärys liian pieni', 'Kaulan ympäryksen tulee olla vähintään 20 cm')
+        if neck < 21:
+            #self.alert('Tarkista kaulan koko', 'kaulan ympärys liian pieni', 'Kaulan ympäryksen tulee olla vähintään 20 cm')
+            self.showMessageBox('Tarkista kaulan koko', 'Kaulan ympärys virheellinen', 'Sallitut arvot 21 - 60 cm', 'Warning')
         waist = self.waistSB.value()
         hips = self.hipsSB.value()
 
@@ -251,6 +266,8 @@ class MainWindow(QW.QMainWindow):
             # Piilottaa tallenna näppäimen operaation suorittamisen jälkeen
             self.savePB.setEnabled(False)
 
+    def restoreDefault(self):
+        pass
 
 
 if __name__ == "__main__":
