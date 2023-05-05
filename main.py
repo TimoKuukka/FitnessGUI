@@ -15,6 +15,7 @@ from datetime import date
 import kuntoilija
 import timetools
 import athleteFile # Home made module for processing data files
+import ohje
 
 
 # TODO: Import some library able to plot trends and make it as widget in the UI
@@ -73,7 +74,7 @@ class MainWindow(QW.QMainWindow):
         self.testPB = self.testUiPushButton
         self.testPB.clicked.connect(self.insertTestValues)
 
-        # self.savePB = self.savePushButton
+        # A push button to for saving user data
         self.savePB = self.findChild(QW.QPushButton, 'savePushButton')
         self.savePB.clicked.connect(self.saveData)
         self.savePB.setEnabled(False)
@@ -86,7 +87,10 @@ class MainWindow(QW.QMainWindow):
             self.dataList = data[3]
         except Exception as e:
             data = (0, 'Error', str(e), self.dataList)
-            
+        
+        # MENU ACTIONS
+        self.actionPalauta_oletukset.triggered.connect(self.restoreDefaults)
+        self.actionOhje.triggered.connect(self.openHelpDialog)
         
     # Define slots in methods
 
@@ -255,19 +259,23 @@ class MainWindow(QW.QMainWindow):
             self.alert(status[1], status[2])
         else:
             # Set all inputs to default values
-            self.nameLE.clear()
-            zeroDate = QtCore.QDate(1900, 1, 1)
-            self.birthDE.setDate(zeroDate)
-            self.heightSB.setValue(100)
-            self.weightSB.setValue(20)
-            self.neckSB.setValue(10)
-            self.waistSB.setValue(30)
-            self.hipsSB.setValue(50)
-            # Piilottaa tallenna näppäimen operaation suorittamisen jälkeen
-            self.savePB.setEnabled(False)
+            self.restoreDefaults()
 
-    def restoreDefault(self):
-        pass
+    def restoreDefaults(self):
+        self.nameLE.clear()
+        zeroDate = QtCore.QDate(1900, 1, 1)
+        self.birthDE.setDate(zeroDate)
+        self.heightSB.setValue(100)
+        self.weightSB.setValue(20)
+        self.neckSB.setValue(10)
+        self.waistSB.setValue(30)
+        self.hipsSB.setValue(50)
+        # Hides save push button after clicked
+        self.savePB.setEnabled(False)
+
+    def openHelpDialog(self):
+        openHelp = ohje.OpenHelp()
+        openHelp.exec()
 
 
 if __name__ == "__main__":
@@ -278,7 +286,7 @@ if __name__ == "__main__":
     # Create the Main Window object from MainWindow class and show it on the screen
     appWindow = MainWindow()
     
-    # # Create dark style to all
+
 
     # # Define the palette to dark
     # dark_palette = QPalette()
