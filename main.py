@@ -84,10 +84,6 @@ class MainWindow(QW.QMainWindow):
             data = (0, 'Error', str(e), self.dataList)
             
         
-
-        # Read previous athlete_data from disk
-
-
     # Define slots in methods
 
     # Create a alerting method
@@ -98,6 +94,45 @@ class MainWindow(QW.QMainWindow):
         msgBox.setText(message)
         msgBox.setDetailedText(detailedMessage)
         msgBox.exec()
+
+    # Create a warning method
+    def warn(self, windowTitle, message, detailedMessage):
+        msgBox = QW.QMessageBox()
+        msgBox.setIcon(QW.QMessageBox.Warning)
+        msgBox.setWindowTitle(windowTitle)
+        msgBox.setText(message)
+        msgBox.setDetailedText(detailedMessage)
+        msgBox.exec()
+
+    # Create a inform method
+    def inform(self, windowTitle, message, detailedMessage):
+        msgBox = QW.QMessageBox()
+        msgBox.setIcon(QW.QMessageBox.Information)
+        msgBox.setWindowTitle(windowTitle)
+        msgBox.setText(message)
+        msgBox.setDetailedText(detailedMessage)
+        msgBox.exec()
+
+    def showMessageBox(self, windowTitle, message, detailedMessage, icon='Information'):
+        """Creates a message box for various types of messages
+
+        Args:
+            windowTitle (str): Header for the message windowsS
+            message (str): Message to be shown
+            detailedMessage (str): A message that can be shoen by pressing details button
+            icon (str, optional): Allowed values: NoIcon, Information, Question, Warning and Critical
+            Defaults to Information.
+        """
+        iconTypes = {'Information': QW.QMessageBox.Information, 'NoIcon': QW.QMessageBox.NoIcon,
+         'Question': QW.QMessageBox.Question, 'Warning': QW.QMessageBox.Warning,
+         'Critical': QW.QMessageBox.Critical}
+        msgBox = QW.QMessageBox()
+        msgBox.setIcon(iconTypes[icon])
+        msgBox.setWindowTitle(windowTitle)
+        msgBox.setText(message)
+        msgBox.setDetailedText(detailedMessage)
+        msgBox.exec()
+
     
     def activateCalculatePB(self):
         self.calcPB.setEnabled(True)
@@ -161,7 +196,7 @@ class MainWindow(QW.QMainWindow):
 
         neck = self.neckSB.value()
         if neck < 20:
-            self.alert('Virheellinen kaulan ympärys', 'Kaulan ympäryksen tulee olla vähintään 20 cm')
+            self.alert('Tarkista kaulan koko', 'kaulan ympärys liian pieni', 'Kaulan ympäryksen tulee olla vähintään 20 cm')
         waist = self.waistSB.value()
         hips = self.hipsSB.value()
 
