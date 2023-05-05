@@ -58,13 +58,17 @@ class MainWindow(QW.QMainWindow):
         self.hipsSB.setEnabled(False)
         self.hipsSB.valueChanged.connect(self.activateCalculatePB)
 
-        # TODO: Disable Calculate button until values have been edited
+        # Create a status bar for showing informational messages
+        self.statusBar = QW.QStatusBar()
+        self.setStatusBar(self.statusBar)
+        self.statusBar.show()
+
+    
         # self.calculatePB = self.calculatePushButton
         self.calcPB = self.findChild(QW.QPushButton, 'calcPushButton')
         self.calcPB.clicked.connect(self.calculateAll)
         self.calcPB.setEnabled(False)
 
-        # TODO: Disable Save button until values have been edited
         # self.savePB = self.savePushButton
         self.savePB = self.findChild(QW.QPushButton, 'savePushButton')
         self.savePB.clicked.connect(self.saveData)
@@ -86,6 +90,14 @@ class MainWindow(QW.QMainWindow):
 
     # Define slots in methods
 
+    # Create a alerting method
+    def alert(self, windowTitle, message, detailedMessage):
+        msgBox = QW.QMessageBox()
+        msgBox.setIcon(QW.QMessageBox.Critical)
+        msgBox.setWindowTitle(windowTitle)
+        msgBox.setText(message)
+        msgBox.setDetailedText(detailedMessage)
+        msgBox.exec()
     
     def activateCalculatePB(self):
         self.calcPB.setEnabled(True)
@@ -148,6 +160,8 @@ class MainWindow(QW.QMainWindow):
         age = timetools.datediff2(birthday, dateOfWeighing, 'year')
 
         neck = self.neckSB.value()
+        if neck < 20:
+            self.alert('Virheellinen kaulan ympärys', 'Kaulan ympäryksen tulee olla vähintään 20 cm')
         waist = self.waistSB.value()
         hips = self.hipsSB.value()
 
@@ -175,33 +189,44 @@ class MainWindow(QW.QMainWindow):
 
     # Saves the data to a disk
     def saveData(self):
+
+        # Add current values to a list
         self.dataList.append(self.dataRow)
+
+        # Save the list to a json file
         jsonfile2 = athleteFile.ProcessJsonFile()
         status = jsonfile2.saveData('athleteData.json', self.dataList)
-        # Palautetaan arvot tallennuksen jälkeen
-        self.nameLE.clear()
-        zeroDate = QtCore.QDate(1900, 1, 1)
-        self.birthDE.setDate(zeroDate)
-        self.heightSB.setValue(100)
-        self.weightSB.setValue(20)
-        self.neckSB.setValue(10)
-        self.waistSB.setValue(30)
-        self.hipsSB.setValue(50)
-        # Piilottaa tallenna näppäimen operaation suorittamisen jälkeen
-        self.savePB.setEnabled(False)
+
+        # Show status message on status bar
+        self.statusBar.showMessage(status[1], 4000)
+
+        # TODO: Call error message box if error code is 0
+        if status[0] != 0:
+            self.alert(status[1], status[2])
+        else:
+            # Set all inputs to default values
+            self.nameLE.clear()
+            zeroDate = QtCore.QDate(1900, 1, 1)
+            self.birthDE.setDate(zeroDate)
+            self.heightSB.setValue(100)
+            self.weightSB.setValue(20)
+            self.neckSB.setValue(10)
+            self.waistSB.setValue(30)
+            self.hipsSB.setValue(50)
+            # Piilottaa tallenna näppäimen operaation suorittamisen jälkeen
+            self.savePB.setEnabled(False)
 
 
 
 if __name__ == "__main__":
     # Create the application
     app = QW.QApplication(sys.argv)
+    app.setStyle('Fusion') # Use Fusion style
 
     # Create the Main Window object from MainWindow class and show it on the screen
     appWindow = MainWindow()
     
     # # Create dark style to all
-    # # Force the style to be the same on all OSs:
-    # app.setStyle('Fusion')
 
     # # Define the palette to dark
     # dark_palette = QPalette()
