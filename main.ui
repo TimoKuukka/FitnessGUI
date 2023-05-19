@@ -282,8 +282,8 @@
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>220</y>
+      <x>270</x>
+      <y>330</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -300,8 +300,8 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>270</y>
+      <x>270</x>
+      <y>450</y>
       <width>111</width>
       <height>16</height>
      </rect>
@@ -318,8 +318,8 @@
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>270</y>
+      <x>270</x>
+      <y>390</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -336,8 +336,8 @@
    <widget class="QLabel" name="bmiLabel">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>240</y>
+      <x>270</x>
+      <y>350</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -354,8 +354,8 @@
    <widget class="QLabel" name="fatFiLabel">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>290</y>
+      <x>270</x>
+      <y>410</y>
       <width>111</width>
       <height>16</height>
      </rect>
@@ -372,8 +372,8 @@
    <widget class="QLabel" name="fatUsLabel">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>290</y>
+      <x>270</x>
+      <y>470</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -453,6 +453,48 @@
     </property>
     <property name="text">
      <string>Testaa</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>229</y>
+      <width>241</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/pictures/MiesSlice.png);
+background-image: url(:/pictures/NaisSlice.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>230</y>
+      <width>81</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="dialogResources.qrc">:/pictures/MiesSlice.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -605,6 +647,8 @@
   <tabstop>calcPushButton</tabstop>
   <tabstop>savePushButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="dialogResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

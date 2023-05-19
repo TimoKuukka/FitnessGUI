@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="pictures">
+    <file>Kuntoillaan.png</file>
+    <file>MiesSlice.png</file>
+    <file>NaisSlice.png</file>
+  </qresource>
+</RCC>
