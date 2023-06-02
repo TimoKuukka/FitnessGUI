@@ -526,7 +526,7 @@ background-image: url(:/pictures/NaisSlice.png);</string>
      <string>0</string>
     </property>
    </widget>
-   <widget class="QSlider" name="verticalSlider">
+   <widget class="QSlider" name="verticalSliderHeight">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -647,7 +647,7 @@ background-image: url(:/pictures/NaisSlice.png);</string>
    <zorder>horizontalSliderHips</zorder>
    <zorder>label_11</zorder>
    <zorder>bmiLabel</zorder>
-   <zorder>verticalSlider</zorder>
+   <zorder>verticalSliderHeight</zorder>
    <zorder>labelHeight</zorder>
    <zorder>label_2</zorder>
   </widget>
@@ -864,7 +864,7 @@ background-image: url(:/pictures/NaisSlice.png);</string>
    </hints>
   </connection>
   <connection>
-   <sender>verticalSlider</sender>
+   <sender>verticalSliderHeight</sender>
    <signal>valueChanged(int)</signal>
    <receiver>labelHeight</receiver>
    <slot>setNum(int)</slot>
