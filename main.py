@@ -46,6 +46,7 @@ class MainWindow(QW.QMainWindow):
         self.weighingDE = self.weighingDateEdit
         self.weighingDE.setDate(self.currentDate)
 
+        # TODO: Change spin boxes to sliders
         # Measurement data
         self.heightSB = self.heightSpinBox
         self.heightSB.valueChanged.connect(self.activateCalculatePB)
