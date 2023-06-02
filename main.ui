@@ -326,7 +326,7 @@
      <string>Testaa</string>
     </property>
    </widget>
-   <widget class="QFrame" name="dimensionframe">
+   <widget class="QFrame" name="dimensionFrame">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -638,7 +638,7 @@ background-image: url(:/pictures/NaisSlice.png);</string>
    <zorder>ageLabel</zorder>
    <zorder>birthDateEdit</zorder>
    <zorder>testUiPushButton</zorder>
-   <zorder>dimensionframe</zorder>
+   <zorder>dimensionFrame</zorder>
    <zorder>horizontalSliderNeck</zorder>
    <zorder>labelNeck</zorder>
    <zorder>horizontalSliderWaist</zorder>
