@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>821</width>
+    <width>801</width>
     <height>955</height>
    </rect>
   </property>
@@ -326,7 +326,7 @@
      <string>Testaa</string>
     </property>
    </widget>
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="dimensionframe">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -638,7 +638,7 @@ background-image: url(:/pictures/NaisSlice.png);</string>
    <zorder>ageLabel</zorder>
    <zorder>birthDateEdit</zorder>
    <zorder>testUiPushButton</zorder>
-   <zorder>frame</zorder>
+   <zorder>dimensionframe</zorder>
    <zorder>horizontalSliderNeck</zorder>
    <zorder>labelNeck</zorder>
    <zorder>horizontalSliderWaist</zorder>
@@ -656,7 +656,7 @@ background-image: url(:/pictures/NaisSlice.png);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>821</width>
+     <width>801</width>
      <height>21</height>
     </rect>
    </property>
