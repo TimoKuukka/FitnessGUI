@@ -16,8 +16,11 @@ import kuntoilija
 import timetools
 import athleteFile # Home made module for processing data files
 import ohje
+import BGPictures # Compiled resources for background images
 
 
+# FIXME: DONT WORK BECAUSE DIMENSIONFRAME ! !
+# TODO: Make another resource file for the help window, build and import it
 # TODO: Import some library able to plot trends and make it as widget in the UI
 
 # Class for the main window
@@ -59,6 +62,9 @@ class MainWindow(QW.QMainWindow):
         self.hipsHS = self.horizontalSliderHips
         self.hipsHS.setEnabled(False)
         self.hipsHS.valueChanged.connect(self.activateCalculatePB)
+
+        # Background image for body dimensions is a QFrame with a background image by default a woman
+        self.dimensionBox = self.dimensionFrame
 
         # Create a status bar for showing informational messages
         self.statusBar = QW.QStatusBar()
@@ -166,18 +172,20 @@ class MainWindow(QW.QMainWindow):
         if self.waistHS.value() == 30:
             self.calcPB.setEnabled(False)
 
-        if self.genderCB.currentText() == 'Nainen':
-            self.hipsHS.setEnabled(True)
+        if self.genderCB.currentText() == 'Nainen' or self.genderCB.currentText() == '':
+            self.hipsHS.show()
+            self.dimensionBox.setStyleSheet("background-image : url(:/pictures/NaisSlice.png)") # Change the bg image
 
             if self.hipsHS.value() == 50:  
                 self.calcPB.setEnabled(False)
         else:
-            self.hipsHS.setEnabled(False)
+            self.hipsHS.hide() # Hide Hips spinbox
+            self.dimensionBox.setStyleSheet("background-image : url(:/pictures/MiesSlice.png)") # Change the bg image
 
 
             
     def insertTestValues(self):
-        # Set test values to alla controls
+        # Set test values to all controls
         self.nameLE.setText('Erkki Esimerkki')
         testBirhtday = QtCore.QDate(1987, 12, 31)
         self.birthDE.setDate(testBirhtday)
