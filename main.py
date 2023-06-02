@@ -48,17 +48,17 @@ class MainWindow(QW.QMainWindow):
 
         # TODO: Change spin boxes to sliders
         # Measurement data
-        self.heightSB = self.heightSpinBox
-        self.heightSB.valueChanged.connect(self.activateCalculatePB)
-        self.weightSB = self.weightSpinBox
-        self.weightSB.valueChanged.connect(self.activateCalculatePB)
-        self.neckSB = self.neckSpinBox
-        self.neckSB.valueChanged.connect(self.activateCalculatePB)
-        self.waistSB = self.waistSpinBox
-        self.waistSB.valueChanged.connect(self.activateCalculatePB)
-        self.hipsSB = self.hipsSpinBox
-        self.hipsSB.setEnabled(False)
-        self.hipsSB.valueChanged.connect(self.activateCalculatePB)
+        self.heightVS = self.verticalSliderHeight
+        self.heightVS.valueChanged.connect(self.activateCalculatePB)
+        self.weightDial = self.weightDial
+        self.weightDial.valueChanged.connect(self.activateCalculatePB)
+        self.neckHS = self.horizontalSliderNeck
+        self.neckHS.valueChanged.connect(self.activateCalculatePB)
+        self.waistHS = self.horizontalSliderWaist
+        self.waistHS.valueChanged.connect(self.activateCalculatePB)
+        self.hipsHS = self.horizontalSliderHips
+        self.hipsHS.setEnabled(False)
+        self.hipsHS.valueChanged.connect(self.activateCalculatePB)
 
         # Create a status bar for showing informational messages
         self.statusBar = QW.QStatusBar()
@@ -154,25 +154,25 @@ class MainWindow(QW.QMainWindow):
         if self.genderCB.currentText() == '':
             self.calcPB.setEnabled(False)
         
-        if self.heightSB.value() == 100:
+        if self.heightVS.value() == 100:
             self.calcPB.setEnabled(False)
 
-        if self.weightSB.value() == 20:
+        if self.weightDial.value() == 20:
             self.calcPB.setEnabled(False)
 
-        if self.neckSB.value() == 10:
+        if self.neckHS.value() == 10:
             self.calcPB.setEnabled(False)
 
-        if self.waistSB.value() == 30:
+        if self.waistHS.value() == 30:
             self.calcPB.setEnabled(False)
 
         if self.genderCB.currentText() == 'Nainen':
-            self.hipsSB.setEnabled(True)
+            self.hipsHS.setEnabled(True)
 
-            if self.hipsSB.value() == 50:  
+            if self.hipsHS.value() == 50:  
                 self.calcPB.setEnabled(False)
         else:
-            self.hipsSB.setEnabled(False)
+            self.hipsHS.setEnabled(False)
 
 
             
@@ -182,17 +182,17 @@ class MainWindow(QW.QMainWindow):
         testBirhtday = QtCore.QDate(1987, 12, 31)
         self.birthDE.setDate(testBirhtday)
         self.genderCB.setCurrentText('Mies')
-        self.heightSB.setValue(179)
-        self.weightSB.setValue(105)
-        self.neckSB.setValue(30)
-        self.waistSB.setValue(105)
+        self.heightVS.setValue(179)
+        self.weightDial.setValue(105)
+        self.neckHS.setValue(30)
+        self.waistHS.setValue(105)
 
     
     # Calculates BMI, finnish and US fat percentages and updates corrensponding labels
     def calculateAll(self):
         name = self.nameLE.text()
-        height = self.heightSB.value() # Spinbox value as an integer 
-        weight = self.weightSB.value()
+        height = self.heightVS.value() # Spinbox value as an integer 
+        weight = self.weightDial.value()
 
         self.calcPB.setEnabled(False)
         self.savePB.setEnabled(True)
@@ -213,12 +213,12 @@ class MainWindow(QW.QMainWindow):
         # Calculate time difference using our home made tools
         age = timetools.datediff2(birthday, dateOfWeighing, 'year')
 
-        neck = self.neckSB.value()
+        neck = self.neckHS.value()
         if neck < 21:
             #self.alert('Tarkista kaulan koko', 'kaulan ympärys liian pieni', 'Kaulan ympäryksen tulee olla vähintään 20 cm')
             self.showMessageBox('Tarkista kaulan koko', 'Kaulan ympärys virheellinen', 'Sallitut arvot 21 - 60 cm', 'Warning')
-        waist = self.waistSB.value()
-        hips = self.hipsSB.value()
+        waist = self.waistHS.value()
+        hips = self.hipsHS.value()
 
         athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, neck, waist, hips, dateOfWeighing)
             
@@ -266,11 +266,11 @@ class MainWindow(QW.QMainWindow):
         self.nameLE.clear()
         zeroDate = QtCore.QDate(1900, 1, 1)
         self.birthDE.setDate(zeroDate)
-        self.heightSB.setValue(100)
-        self.weightSB.setValue(20)
-        self.neckSB.setValue(10)
-        self.waistSB.setValue(30)
-        self.hipsSB.setValue(50)
+        self.heightVS.setValue(100)
+        self.weightDial.setValue(20)
+        self.neckHS.setValue(10)
+        self.waistHS.setValue(30)
+        self.hipsHS.setValue(50)
         # Hides save push button after clicked
         self.savePB.setEnabled(False)
 
