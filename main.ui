@@ -343,6 +343,8 @@
     </property>
     <property name="styleSheet">
      <string notr="true">background-image: url(:/pictures/MiesSlice.png);
+background-image: url(:/png/MiesSlice.png);
+background-image: url(:/png/NaisSlice.png);
 background-image: url(:/pictures/NaisSlice.png);</string>
     </property>
     <property name="frameShape">
@@ -797,6 +799,7 @@ background-image: url(:/pictures/NaisSlice.png);</string>
  </tabstops>
  <resources>
   <include location="dialogResources.qrc"/>
+  <include location="BGPictures.qrc"/>
  </resources>
  <connections>
   <connection>

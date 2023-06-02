@@ -172,15 +172,18 @@ class MainWindow(QW.QMainWindow):
         if self.waistHS.value() == 30:
             self.calcPB.setEnabled(False)
 
+        # FIXME: NaisSlice wont work properly
+
         if self.genderCB.currentText() == 'Nainen' or self.genderCB.currentText() == '':
             self.hipsHS.show()
-            self.dimensionBox.setStyleSheet("background-image : url(:/pictures/NaisSlice.png)") # Change the bg image
+            self.dimensionBox.setStyleSheet("background-image : url(NaisSlice.png)") # Change the bg image
 
             if self.hipsHS.value() == 50:  
                 self.calcPB.setEnabled(False)
         else:
-            self.hipsHS.hide() # Hide Hips spinbox
-            self.dimensionBox.setStyleSheet("background-image : url(:/pictures/MiesSlice.png)") # Change the bg image
+            self.hipsHS.hide() # Hide Hips slider and the label
+            self.labelHips.hide()
+            self.dimensionBox.setStyleSheet("background-image : url(MiesSlice.png)") # Change the bg image
 
 
             
